@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish Football League</title>
+    <!-- css -->
+    <link rel="stylesheet" href="index.css"/>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- Fixtures -->
+    <div class="container w-100 p-5" id="app">
+        <div class="form-group ldesgn">
+            <h2 class="text-dark text-center display-3 pb-3">Football</h2>
+            <select class="form-control" v-model="lg">
+                <option value="spor-toto-super-lig" disabled selected>Select your option</option>
+                <option value="spor-toto-super-lig" selected>Spor Toto Super League</option>
+                <option value="tff-1-lig">TFF 1. League </option>
+                <option value="tff-2-lig">TFF 2. League</option>
+                <option value="ingiltere-premier-ligi">Premier League</option>
+                <option value="ingiltere-sampiyonluk-ligi"> EFL Championship</option>
+                <option value="ingiltere-1-ligi">League 1</option>
+                <option value="ingiltere-2-ligi">League 2</option>
+                <option value="almanya-bundesliga">Bundesliga</option>
+                <option value="almanya-bundesliga-2-ligi">Bundesliga 2</option>
+                <option value="almanya-3-ligi">Premiere League</option>
+                <option value="italya-serie-a-ligi">Serie A</option>
+                <option value="italya-serie-b-ligi">Serie B</option>
+                <option value="ispanya-la-liga">LaLiga </option>
+                <option value="ispanya-2-ligi">LaLiga 2</option>
+                <option value="fransa-ligue-1">Ligue 1</option>
+                <option value="fransa-ligue-2">Ligue 2</option>
+                <option value="hollanda-eredivisie-ligi">Eredivisie</option>
+                <option value="hollanda-2-ligi">Eredivisie 2</option>
+                <option value="portekiz-super-ligi">Primeira Liga</option>
+                <option value="rusya-premier-ligi">Russian Premier </option>
+                <option value="brezilya-serie-a">Brazil Serie A</option>
+                <option value="arjantin-primera-b-ligi">Brazil Serie B</option>
+                <option value="arjantin-primera-a-apertura">Argentina Primera A Apertura</option>
+                <option value="arjantin-primera-a-clausura">Argentina Primera A Clasura</option>
+            </select><br/>
+            <button type="button" class="btn btn-dark" @click="standings(lg)">Standings</button>
+            <button type="button" class="btn btn-dark" @click="results(lg)">Results</button>
+            <button type="button" class="btn btn-dark" @click="goals(lg)">Goal Kings</button>
+            <br/><hr/>
+            <ol class="form-check text-dark">
+                <!-- Standings -->
+                <li class="pt-3" v-for="team in teams" v-if="tcont==true">
+                    <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="team.Takım"></span>
+                    <p  class="text-left text-dark pb-1 pt-1" style="font-size:16px;">Total Match:{{team.O}} | {{team.G}} Wins | {{team.B}} Tie  | {{team.M}} Lose | {{team.Puan}} Points </p>
+                    <hr/>
+                </li>
+                <!-- Results -->
+                <li class="pt-3" v-for="rs in res" v-if="rcont==true">
+                    <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="rs.home"></span>
+                    <span class="text-left text-dark font-weight-bold pr-2 pl-2" style="font-size:24px;" v-text="rs.skor"></span>
+                    <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="rs.away"></span>
+                    <p  class="text-left text-dark pb-1 pt-1" style="font-size:16px;">{{rs.date}}</p>
+                    <hr/>
+                </li>
+                  <!-- Goal Kings -->
+                  <li class="pt-3" v-for="player in gkings" v-if="gcont==true">
+                    <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="player.name"></span>
+                    <p  class="text-left text-dark pb-1 pt-1" style="font-size:16px;">{{player.goals}} Goals | {{player.play}} Match</p>
+                    <hr/>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
