@@ -26,5 +26,5 @@
 > - Argentina Primera A Apertura<br/>
 > - Argentina Primera A Clasura<br/>
 
-> **[You can try](https://yunusemrealps.github.io/Football_Leagues_Info/.)**
+> **[You can try](https://yunusemrealps.github.io/Football_Leagues_Info/)**
 
